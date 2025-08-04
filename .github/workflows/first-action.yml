@@ -14,4 +14,5 @@ jobs:
           echo "🎉 Hello, GitHub Actions!"
           pwd
           ls -la
+          chmod +x src/script.sh
           bash src/script.sh
