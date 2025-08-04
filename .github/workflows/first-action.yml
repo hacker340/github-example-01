@@ -1,25 +1,34 @@
-name: First GitHub Actions Workflow
-
-on:
+name: Python CI with Matrix
+ 
+on: 
   pull_request:
     branches:
       - master
   push:
     branches:
       - master
-      - main
-
+ 
 jobs:
-  hello-world:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]   # Runs the job once per version
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Print Hello, World
+      - uses: actions/checkout@v4
+ 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+ 
+      - name: Install dependencies
         run: |
-          echo "🎉 Hello, GitHub Actions!"
-          pwd
-          ls -la
-          chmod +x src/script.sh
-          bash src/script.sh
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+ 
+      - name: Display Python version
+        run: python --version
+ 
+      - name: Run tests
+        run: pytest
