@@ -3,8 +3,7 @@ name: First GitHub Actions Workflow
 on:
   pull_request:
     branches:
-      - master
-      - main
+      - "test-1"
   push:
     branches:
       - master
