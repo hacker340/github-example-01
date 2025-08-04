@@ -2,7 +2,7 @@ name: Python CI with Matrix
  
 on: 
   schedule:
-    - cron: '10 10 * * *'
+    - cron: '12 10 * * *'
   pull_request:
     branches:
       - master
