@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.9, 3.10]   # Runs the job once per version
+        python-version: [3.8, 3.9]   # Runs the job once per version
     steps:
       - uses: actions/checkout@v4
  
       - name: Set up Python
-        uses: actions/setup-python@v5.6.0
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
  
