@@ -1,8 +1,9 @@
 name: On Release Published
 
 on:
-  release:
-    types: [published]
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
